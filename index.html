@@ -1,13 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <title>Mahesh's Fitness Journey</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0e1a" />
+  <title>Mahesh · Workout Assistant</title>
+  <meta name="description" content="Personal workout assistant with step-by-step form guidance." />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%AA%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>My Workout Routine</h1>
-    <p>Tracking my fitness goals and daily exercises here.</p>
-    <!-- Link back to your main intro page -->
-    <p><a href="/">Back to Home</a></p>
+  <!-- Ambient animated background glow -->
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <div class="app-shell">
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="avatar" id="avatar" aria-hidden="true"></div>
+        <div class="topbar-greeting">
+          <span class="greeting-line" id="greetingLine">Welcome back,</span>
+          <strong class="greeting-name" id="greetingName">Mahesh</strong>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark/light theme">
+        <span class="theme-toggle-icon" id="themeToggleIcon">🌙</span>
+      </button>
+    </header>
+
+    <!-- Views container -->
+    <main class="views" id="views">
+
+      <!-- ============ HOME ============ -->
+      <section class="view view-home is-active" id="view-home" tabindex="-1">
+        <p class="date-line" id="dateLine"></p>
+        <blockquote class="quote-card" id="quoteCard">
+          <span class="quote-mark">"</span>
+          <span class="quote-text" id="quoteText"></span>
+        </blockquote>
+
+        <!-- Today's focus hero -->
+        <article class="today-card" id="todayCard">
+          <!-- filled by app.js -->
+        </article>
+
+        <!-- Stats row -->
+        <div class="stats-row" id="statsRow">
+          <div class="stat-card">
+            <div class="ring" id="weekRing" style="--pct:0">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="ring-track" cx="50" cy="50" r="42"></circle>
+                <circle class="ring-fill" cx="50" cy="50" r="42"></circle>
+              </svg>
+              <span class="ring-label" id="weekRingLabel">0%</span>
+            </div>
+            <span class="stat-caption">Week complete</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="statStreak">0</span>
+            <span class="stat-caption">Day streak</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="statDone">0</span>
+            <span class="stat-caption">Workouts done</span>
+          </div>
+        </div>
+
+        <h2 class="section-title">This Week</h2>
+        <div class="week-strip" id="weekStrip"><!-- day chips --></div>
+      </section>
+
+      <!-- ============ WEEKLY ============ -->
+      <section class="view view-weekly" id="view-weekly" tabindex="-1">
+        <h1 class="view-title">Weekly Schedule</h1>
+        <p class="view-sub">Tap any day to see the workout and form guides.</p>
+        <div class="day-grid" id="dayGrid"><!-- day cards --></div>
+      </section>
+
+      <!-- ============ DAY DETAIL ============ -->
+      <section class="view view-day" id="view-day" tabindex="-1">
+        <button class="back-btn" data-nav="weekly" type="button">← Week</button>
+        <div id="dayDetail"><!-- filled by app.js --></div>
+      </section>
+
+      <!-- ============ EXERCISE DETAIL (the centerpiece) ============ -->
+      <section class="view view-exercise" id="view-exercise" tabindex="-1">
+        <button class="back-btn" id="exerciseBack" type="button">← Back</button>
+        <div id="exerciseDetail"><!-- filled by app.js --></div>
+      </section>
+
+      <!-- ============ NUTRITION ============ -->
+      <section class="view view-nutrition" id="view-nutrition" tabindex="-1">
+        <div id="nutritionView"><!-- filled by app.js --></div>
+      </section>
+
+    </main>
+
+    <!-- Bottom navigation -->
+    <nav class="bottom-nav" id="bottomNav">
+      <button class="nav-btn is-active" data-nav="home" type="button">
+        <span class="nav-ico">🏠</span><span class="nav-txt">Home</span>
+      </button>
+      <button class="nav-btn" data-nav="weekly" type="button">
+        <span class="nav-ico">📅</span><span class="nav-txt">Weekly</span>
+      </button>
+      <button class="nav-btn" data-nav="nutrition" type="button">
+        <span class="nav-ico">🥗</span><span class="nav-txt">Nutrition</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Celebration layer -->
+  <div class="celebrate" id="celebrate" aria-hidden="true"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

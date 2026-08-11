@@ -1,0 +1,19 @@
+{
+  "name": "Mahesh · Workout Assistant",
+  "short_name": "Workout",
+  "description": "Personal workout assistant with step-by-step form guidance.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070b16",
+  "theme_color": "#0a0e1a",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
